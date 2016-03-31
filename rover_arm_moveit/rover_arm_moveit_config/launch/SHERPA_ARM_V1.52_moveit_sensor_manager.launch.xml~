@@ -1,9 +1,0 @@
-<launch>
-
-    <rosparam command="load" file="$(find rover_arm_moveit_config)/config/sensors_kinect.yaml" />
-    
-    <param name="octomap_frame" type="string" value="camera_link" />
-    <param name="octomap_resolution" type="double" value="0.025" />
-    <param name="max_range" type="double" value="1.2" /> 
-
-</launch>
