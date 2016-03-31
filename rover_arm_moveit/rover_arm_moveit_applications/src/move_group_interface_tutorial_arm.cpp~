@@ -1,0 +1,110 @@
+#include <moveit/move_group_interface/move_group.h>
+#include <moveit/planning_scene_interface/planning_scene_interface.h>
+
+#include <moveit_msgs/DisplayRobotState.h>
+#include <moveit_msgs/DisplayTrajectory.h>
+
+#include <moveit_msgs/AttachedCollisionObject.h>
+#include <moveit_msgs/CollisionObject.h>
+
+int main (int argc, char **argv)
+{
+    ros::init(argc, argv, "move_group_interface_tutorial_arm");
+    ros::NodeHandle node_handle;
+    ros::AsyncSpinner spinner(1);
+    spinner.start();
+
+    //sleeping to load rviz
+    sleep(15.0);
+
+    //the move group interface allow me to control and plan only
+    //for the desired group, in my case the group "arm" defined
+    //in the moveit setup config files
+    moveit::planning_interface::MoveGroup group("arm");
+
+    //now the planning scene interface allows us to deal with the world
+    //coordinates, objects..
+    moveit::planning_interface::PlanningSceneInterface planning_scene_interface;
+
+    //hereafter we create a publisher in order to display trajectories
+    //on rviz. ======DO IT IN VREP LATER ON======
+    ros::Publisher display_publisher = node_handle.advertise<moveit_msgs::DisplayTrajectory>("/move_group/display_planned_path", 1, true);
+    moveit_msgs::DisplayTrajectory display_trajectory;
+
+    //printing out ref.frame for the robot and eef name
+    ROS_INFO("Reference frame: %s", group.getPlanningFrame().c_str());
+    ROS_INFO("Reference frame: %s", group.getEndEffectorLink().c_str());
+
+    //==================================
+    //=====Planning to a pose goal======
+    //==================================
+    //we plan now for a desired motion for the eef
+    geometry_msgs::Pose target_pose1;
+    //here i define the message
+    target_pose1.orientation.w = 1.0;
+    target_pose1.position.x = 0.132;
+    target_pose1.position.y = 0.545;
+    target_pose1.position.z = 0.647;
+
+    //now i give this setpoint to my group object
+    group.setPoseTarget(target_pose1);
+
+    //let's call the planner to compute and visualize this plan
+    moveit::planning_interface::MoveGroup::Plan my_plan; //giving the name my_plan
+    bool success = group.plan(my_plan);
+
+    ROS_INFO("Visualizing plan 1 (pose goal for the eef) %s", success? "":"FAILED");
+    sleep(8.0); //give time to rviz to visu
+
+    //======================================================//
+    /* Uncomment below line when working with a real robot*/
+    //group.move();
+    //======================================================//
+
+    //now we are going to introduce and object and see how trajectory changes
+	//define a collsion object message first
+	moveit_msgs::CollisionObject collision_object;
+	collision_object.header.frame_id = group.getPlanningFrame();
+	collision_object.id = "obstacle";
+
+	shape_msgs::SolidPrimitive primitive;
+	primitive.type = primitive.BOX;
+    primitive.dimensions.resize(3);
+    primitive.dimensions[0] = 0.3;
+    primitive.dimensions[1] = 0.1;
+    primitive.dimensions[2] = 0.3;
+
+    //now i'm placing the box relatively to frame_id selected above
+    geometry_msgs::Pose obstacle_pose;
+    obstacle_pose.orientation.w = 1.0;
+    obstacle_pose.position.x = 0.0;
+    obstacle_pose.position.y = 0.3;
+    obstacle_pose.position.z = 1.0;
+
+    collision_object.primitives.push_back(primitive);
+    collision_object.primitive_poses.push_back(obstacle_pose);
+    collision_object.operation = collision_object.ADD;
+
+    std::vector<moveit_msgs::CollisionObject> collision_objects;
+    collision_objects.push_back(collision_object);
+    //in case i want to add some more objs
+
+    //now we effectively add the obj into the world
+    ROS_INFO("An obstacle spawns in the world");
+    planning_scene_interface.addCollisionObjects(collision_objects);
+    //sleep to see the object in rviz
+    sleep(5.0);
+
+    //let's increase allotted time for planning when an obj is present
+    group.setPlanningTime(12.0);
+
+    //now hopefully we give a pose setpoint and the arm avoids the obstacle
+    group.setStartState(*group.getCurrentState());
+    group.setPoseTarget(target_pose1);
+    success = group.plan(my_plan);
+
+    ROS_INFO("Visualizing same target pose avoiding obstacles...%s", success ? "" : "FAILED");
+
+    sleep(20.0);
+    return 0;
+}

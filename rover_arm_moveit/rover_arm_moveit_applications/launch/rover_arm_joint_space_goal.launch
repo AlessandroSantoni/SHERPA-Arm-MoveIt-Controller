@@ -1,0 +1,8 @@
+<launch>
+
+    <include file="$(find rover_arm_moveit_config)/launch/demo.launch"/>
+
+    <node name="rover_arm_joint_space_goal" pkg="rover_arm_moveit_applications" type="rover_arm_joint_space_goal" respawn="false" output="screen">
+    </node>
+
+</launch>

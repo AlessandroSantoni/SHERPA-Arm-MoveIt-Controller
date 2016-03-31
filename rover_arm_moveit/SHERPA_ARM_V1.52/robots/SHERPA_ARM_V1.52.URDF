@@ -1,0 +1,474 @@
+<robot
+  name="SHERPA_ARM_V1.52">
+  <link
+    name="sherpa_arm_base">
+    <inertial>
+      <origin
+        xyz="-3.3669327527676E-07 0.034639515529795 -0.00201572680083581"
+        rpy="0 0 0" />
+      <mass
+        value="0.868958217935149" />
+      <inertia
+        ixx="0.00124226700271398"
+        ixy="2.15092356405084E-09"
+        ixz="-1.52708651290227E-08"
+        iyy="0.00178270756811501"
+        iyz="-6.69775734549582E-06"
+        izz="0.00133541020911775" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://SHERPA_ARM_V1.52/meshes/sherpa_arm_base.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://SHERPA_ARM_V1.52/meshes/sherpa_arm_base.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="Shoulder_Body1">
+    <inertial>
+      <origin
+        xyz="-2.02873738631739E-17 0.0633510919990362 1.24856727474778E-17"
+        rpy="0 0 0" />
+      <mass
+        value="1.3610231356846" />
+      <inertia
+        ixx="0.00204798986770992"
+        ixy="3.10538338306066E-20"
+        ixz="2.67838469900394E-19"
+        iyy="0.00766938604465595"
+        iyz="-2.4617980732633E-20"
+        izz="0.00793382878414882" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://SHERPA_ARM_V1.52/meshes/Shoulder_Body1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://SHERPA_ARM_V1.52/meshes/Shoulder_Body1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Jnt1"
+    type="continuous">
+    <origin
+      xyz="0 0 0.064"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="sherpa_arm_base" />
+    <child
+      link="Shoulder_Body1" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="Shoulder_Body2">
+    <inertial>
+      <origin
+        xyz="-2.44585806867608E-17 0.0561237063753066 -6.03039108523838E-20"
+        rpy="0 0 0" />
+      <mass
+        value="0.461012138776829" />
+      <inertia
+        ixx="0.000725825756389273"
+        ixy="-5.42920224916581E-06"
+        ixz="-2.50416350417845E-06"
+        iyy="0.00354921902923386"
+        iyz="4.38228613230914E-06"
+        izz="0.00377850861402635" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://SHERPA_ARM_V1.52/meshes/Shoulder_Body2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://SHERPA_ARM_V1.52/meshes/Shoulder_Body2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Jnt2"
+    type="continuous">
+    <origin
+      xyz="0 0.069 0"
+      rpy="0 0 0" />
+    <parent
+      link="Shoulder_Body1" />
+    <child
+      link="Shoulder_Body2" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="Upperarm">
+    <inertial>
+      <origin
+        xyz="-2.25643517613142E-17 0.202528238336318 -2.41089213160412E-17"
+        rpy="0 0 0" />
+      <mass
+        value="1.92164159269796" />
+      <inertia
+        ixx="0.0232608791865304"
+        ixy="-5.97586501704561E-19"
+        ixz="-1.11982602125082E-20"
+        iyy="0.00175127676843198"
+        iyz="5.83776292828043E-19"
+        izz="0.0234925956150349" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://SHERPA_ARM_V1.52/meshes/Upperarm.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://SHERPA_ARM_V1.52/meshes/Upperarm.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Jnt3"
+    type="continuous">
+    <origin
+      xyz="0 0.062 0"
+      rpy="0 1.5707963267949 0" />
+    <parent
+      link="Shoulder_Body2" />
+    <child
+      link="Upperarm" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="Elbow">
+    <inertial>
+      <origin
+        xyz="0.00421347006164395 0.0481616790865345 -4.03816934331018E-18"
+        rpy="0 0 0" />
+      <mass
+        value="0.241977859866536" />
+      <inertia
+        ixx="0.000608982370443538"
+        ixy="-4.91040330453884E-05"
+        ixz="2.98948779793128E-20"
+        iyy="0.000430893293415839"
+        iyz="1.09600870754735E-19"
+        izz="0.000872122518006868" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://SHERPA_ARM_V1.52/meshes/Elbow.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://SHERPA_ARM_V1.52/meshes/Elbow.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Jnt4"
+    type="revolute">
+    <origin
+      xyz="0 0.388 0"
+      rpy="0 0 0" />
+    <parent
+      link="Upperarm" />
+    <child
+      link="Elbow" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      effort="30"
+      velocity="1.0"
+      lower="-1.509"
+      upper="0" />
+  </joint>
+  <link
+    name="Underarm_Body1">
+    <inertial>
+      <origin
+        xyz="4.69013910176955E-15 0.0396922391784125 3.24896049680367E-07"
+        rpy="0 0 0" />
+      <mass
+        value="0.235364102335574" />
+      <inertia
+        ixx="0.000380724584362011"
+        ixy="1.13176067540291E-17"
+        ixz="-7.5482713879948E-13"
+        iyy="0.0002820034248728"
+        iyz="7.81388860203566E-10"
+        izz="0.00043293948679229" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://SHERPA_ARM_V1.52/meshes/Underarm_Body1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://SHERPA_ARM_V1.52/meshes/Underarm_Body1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Jnt4_2"
+    type="continuous">
+    <mimic
+      joint="Jnt4" /> 
+    <origin
+      xyz="0 0.12 0"
+      rpy="0 -1.4456E-08 0" />
+    <parent
+      link="Elbow" />
+    <child
+      link="Underarm_Body1" />
+    <axis
+      xyz="-1 0 0" />
+  </joint>
+  <link
+    name="Underarm_Body2">
+    <inertial>
+      <origin
+        xyz="-0.00200948011675322 -0.0642047396388415 -0.00758771456447846"
+        rpy="0 0 0" />
+      <mass
+        value="0.476075097516363" />
+      <inertia
+        ixx="0.00103791177874631"
+        ixy="-1.59497371102587E-06"
+        ixz="3.87750708145077E-05"
+        iyy="0.000502993408790888"
+        iyz="-8.55606312695015E-05"
+        izz="0.00105234138824424" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://SHERPA_ARM_V1.52/meshes/Underarm_Body2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://SHERPA_ARM_V1.52/meshes/Underarm_Body2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Jnt5"
+    type="continuous">
+    <origin
+      xyz="0 0.078 0"
+      rpy="-1.22460635382238E-16 -1.44561631360761E-08 -3.14159265358979" />
+    <parent
+      link="Underarm_Body1" />
+    <child
+      link="Underarm_Body2" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="Wrist">
+    <inertial>
+      <origin
+        xyz="-2.15887864772967E-16 1.11022302462516E-16 1.55468482739315E-15"
+        rpy="0 0 0" />
+      <mass
+        value="0.0417739275927169" />
+      <inertia
+        ixx="3.92091488375942E-06"
+        ixy="-3.69567868605212E-20"
+        ixz="-9.31929182741574E-21"
+        iyy="3.08596770840898E-05"
+        iyz="1.91282210289924E-22"
+        izz="3.08886771258751E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://SHERPA_ARM_V1.52/meshes/Wrist.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://SHERPA_ARM_V1.52/meshes/Wrist.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Jnt6"
+    type="continuous">
+    <origin
+      xyz="0 -0.1838 0"
+      rpy="0 0 0" />
+    <parent
+      link="Underarm_Body2" />
+    <child
+      link="Wrist" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="Gripper">
+    <inertial>
+      <origin
+        xyz="0.000184126801445899 0.0744500238530421 1.86302440355496E-16"
+        rpy="0 0 0" />
+      <mass
+        value="0.3903853435865" />
+      <inertia
+        ixx="0.000409882584608251"
+        ixy="-5.3514978490261E-06"
+        ixz="-1.8401715384104E-20"
+        iyy="0.000335842241195587"
+        iyz="1.32488242815761E-21"
+        izz="0.000413623214329272" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://SHERPA_ARM_V1.52/meshes/Gripper.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://SHERPA_ARM_V1.52/meshes/Gripper.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Jnt7"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="3.1416 1.5708 0" />
+    <parent
+      link="Wrist" />
+    <child
+      link="Gripper" />
+    <axis
+      xyz="-1 0 0" />
+  </joint>
+</robot>

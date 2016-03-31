@@ -1,0 +1,6 @@
+<package>
+  <description brief="SHERPA_ARM_V1.52">SHERPA_ARM_V1.52</description>
+  <depend package="gazebo" />
+  <author>me</author>
+  <license>BSD</license>
+</package>
