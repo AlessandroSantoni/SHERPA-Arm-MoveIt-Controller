@@ -2,7 +2,7 @@
 
 This work is part of my BSc-Thesis. 
 
-Download find-object ROS package on your own. Then replace the files I attach here. 
+Download find-object ROS package on your own. Then add the files I attach here. 
 
 In particular, 
 
