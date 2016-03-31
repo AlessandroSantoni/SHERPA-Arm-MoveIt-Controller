@@ -1,8 +1,0 @@
-<launch>
-
-    <include file="$(find rover_arm_moveit_config)/launch/demo.launch"/>
-    <include file="$(find openni2_launch)/launch/openni2.launch"/>
-
-    <node pkg="tf" type="static_transform_publisher" name="camera_link_broadcaster" args="0.25 0 0 0 0 0 1 camera_link shoulder_base 500" />
-
-<launch/>
