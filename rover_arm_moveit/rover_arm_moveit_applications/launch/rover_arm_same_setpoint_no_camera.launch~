@@ -1,8 +1,0 @@
-<launch>
-
-    <include file="$(find rover_arm_moveit_config)/launch/demo.launch"/>
-
-    <node name="rover_arm_obstacle_on_camera" pkg="rover_arm_moveit_tutorials" type="rover_arm_obstacle_on_camera" respawn="false" output="screen">
-    </node>
-
-</launch>
